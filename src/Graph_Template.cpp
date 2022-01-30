@@ -15,17 +15,35 @@ void Graph_Template::add_node(Node new_node) {
 }
 
 void Graph_Template::update_Node(Node new_node) {
+    if (node_exists(new_node.ID)) // Does the node exist?
+    {
+        //If it does update it!
+        Node old_node = get_node(new_node.ID); //Gets the node via reference
+        old_node = new_node; // Updates it.
+    }
 
 }
 
-Node& Graph_Template::findNode(string ID) {
+Node& Graph_Template::get_node(string ID) {
     for (auto item : table)
     {
-        if (get<0>(item) == ID)
+        if (get<0>(item) == ID) // Does the ID match?
         {
-            return *get<1>(item);
+            return *get<1>(item); //Return the reference via pointer.
         }
 
     }
+
+}
+
+bool Graph_Template::node_exists(string ID) {
+    for (auto item: table)
+    {
+        if (get<0>(item) == ID)
+        {
+            return true;
+        }
+    }
+    return false;
 
 }

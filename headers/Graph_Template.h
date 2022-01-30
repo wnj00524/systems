@@ -26,7 +26,8 @@ private:
 
     //Helper functions
     void update_Node(Node);
-    Node& findNode(string ID);
+    Node& get_node(string ID);
+    bool node_exists(string ID);
 
 };
 
